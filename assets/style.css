@@ -58,7 +58,7 @@ form div{
     align-items: center;
 }
 form div input{
-    width: 180px;
+    width: 150px;
 }
 .int{
     width: 50px;
@@ -66,7 +66,7 @@ form div input{
 .submit{
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 235px;
     align-items: flex-end;
 }
 form{
@@ -76,6 +76,9 @@ form{
 .categ{
     display: flex;
     flex-wrap: wrap;
+}
+.div_b{
+    padding-right: 20px;
 }
 .bus{
     display: flex;
@@ -120,6 +123,7 @@ td,th{
 input{
     border: 2px solid black;
 }
+
 @media (min-width:768px) and (max-width:1023px){
 .cards div{
     margin: 5px;
