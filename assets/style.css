@@ -136,6 +136,11 @@ input{
     display: flex;
     flex-direction: row;
 }
+.submit{
+    margin-left: 225px;
+    display: flex;
+    justify-content: flex-end;
+}
 }
 @media(min-width:1023px){
     .cards div{
