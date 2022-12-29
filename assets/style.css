@@ -6,7 +6,7 @@
 header{
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: gray;
 }
 .logo{
@@ -92,6 +92,8 @@ form{
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .form2{
     display: flex;
@@ -122,6 +124,11 @@ td,th{
 }
 input{
     border: 2px solid black;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 @media (min-width:768px) and (max-width:1023px){
