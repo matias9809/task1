@@ -20,7 +20,7 @@ function card_pa(c,l){
         <p class="card-text">${car.description}</p>
         <div class="price">       
         <p class="card-text">price: $${car.price}</p>
-        <a href="./view.html" class="btn btn-primary">view more</a></div>
+        <a href="./view.html?id=${car._id}" class="btn btn-primary">view more</a></div>
         </div>
         </div>`
     }
