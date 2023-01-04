@@ -57,7 +57,15 @@ form div{
     flex-direction: column;
     align-items: center;
 }
+.form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 form div input{
+    width: 150px;
+}
+.form div input{
     width: 150px;
 }
 .int{
@@ -71,11 +79,19 @@ form div input{
 }
 form{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .categ{
     display: flex;
     flex-wrap: wrap;
+    width: 120px;
+    padding-left: 10px;
 }
 .div_b{
     padding-right: 20px;
@@ -160,6 +176,12 @@ input{
     .categ{
         display: flex;
         flex-direction: row;
+        width: 900px;
+    }
+    .form div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
     table{
         width: 550px;

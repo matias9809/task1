@@ -5,11 +5,46 @@ function todos_los_eventos(data){
     }
     return list
 }
-
 let todos_los_eventos_cards=todos_los_eventos(data);
+const cardTodas=document.getElementById("card_home");
+const categorias = document.getElementById( 'cat' );
+const buscador = document.getElementById( 'buscar' );
+cardTodas.innerHTML=card_t(todos_los_eventos_cards);
+/* 
+categorias.addEventListener( 'change', evento => {
+    const checkbox = document.querySelectorAll( 'input[type="checkbox"]:checked' )
+    console.log(checkbox)
+})
+buscador.addEventListener( 'input', evento => {
+    let categ= todos_los_eventos_cards.filter( filtrarCategoria ) 
+    let template = card_t( categ)
+    cardTodas.innerHTML = template
+})
+function filtrarCategoria(list){
+    return list.c.toLowerCase().includes( buscador.value.toLowerCase() )
+} */
+categorias.addEventListener( 'change', evento => {
+    const checkbox = document.querySelectorAll( 'input[type="checkbox"]:checked' );
+    console.log(checkbox);
+    let categ=todos_los_eventos_cards.filter(filtrarCategoria);
+    let template=card_t(categ);
+    cardTodas.innerHTML=template;
+})
+buscador.addEventListener('input',evento=>{
+    let nom=todos_los_eventos_cards.filter(filtrarNombre);
+    let template=card_t(nom);
+    cardTodas.innerHTML=template;
+})
+function filtrarNombre(list){
+    return list.name.toLowerCase().includes( buscador.value.toLowerCase())
+} 
+function filtrarCategoria(list){
 
-let cardTodas=document.getElementById("card_home");
-function card_t(c,lugar){
+        return list.category.toLowerCase().includes( categorias.target.value.toLowerCase())
+
+} 
+
+function card_t(c){
     let template="";
     for(car of c){
         template+=`<div class="card" style="width: 18rem;">
@@ -23,6 +58,6 @@ function card_t(c,lugar){
         </div>
         </div>`
     }
-    lugar.innerHTML=template;
+    return template
 }
-card_t(todos_los_eventos_cards,cardTodas)
+card_t(todos_los_eventos_cards)
