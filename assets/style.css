@@ -57,16 +57,9 @@ form div{
     flex-direction: column;
     align-items: center;
 }
-.form div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 form div input{
-    width: 150px;
-}
-.form div input{
-    width: 150px;
+    width: 10px;
 }
 .int{
     width: 50px;
@@ -95,6 +88,7 @@ form{
 }
 .div_b{
     padding-right: 20px;
+    padding-left: 20px;
 }
 .bus{
     display: flex;
@@ -116,6 +110,9 @@ form{
     flex-direction: column;
     justify-items: center;
     align-content: center;
+}
+.form2 div input{
+    width: 250px !important;
 }
 table{
     width: 250px;
@@ -145,6 +142,9 @@ input{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+h5{
+    text-align: center;
 }
 
 @media (min-width:768px) and (max-width:1023px){
@@ -177,6 +177,7 @@ input{
         display: flex;
         flex-direction: row;
         width: 900px;
+        margin-left: 20px;
     }
     .form div{
         display: flex;

@@ -1,3 +1,20 @@
+const cardTodas=document.getElementById("card_home");
+const categorias = document.getElementById( 'cat' );
+
+const categoriesCheck = document.querySelector('.categ');
+const todos_los_eventos_cards=todos_los_eventos(data);
+
+
+const buscador = document.getElementById( 'buscar', filtroCruzado );
+const form = document.querySelector('.form')
+
+form.addEventListener( 'change', filtroCruzado)
+buscador.addEventListener('input', filtroCruzado)
+
+
+
+
+
 function todos_los_eventos(data){
     let list=[];
     for(eventos of data.events){
@@ -5,65 +22,10 @@ function todos_los_eventos(data){
     }
     return list
 }
-let todos_los_eventos_cards=todos_los_eventos(data);
-const cardTodas=document.getElementById("card_home");
-const categorias = document.getElementById( 'cat' );
-const checkbox = document.querySelectorAll( 'input[type="checkbox"]:checked' );
-const buscador = document.getElementById( 'buscar' );
-cardTodas.innerHTML=card_t(todos_los_eventos_cards);
-/* 
-categorias.addEventListener( 'change', evento => {
-    const checkbox = document.querySelectorAll( 'input[type="checkbox"]:checked' )
-    console.log(checkbox)
-})
-buscador.addEventListener( 'input', evento => {
-    let categ= todos_los_eventos_cards.filter( filtrarCategoria ) 
-    let template = card_t( categ)
-    cardTodas.innerHTML = template
-})
-function filtrarCategoria(list){
-    return list.c.toLowerCase().includes( buscador.value.toLowerCase() )
-} */
-checkbox.addEventListener( 'change', filtrarCategoria(todos_los_eventos_cards))
-buscador.addEventListener('input',evento=>{
-    let nom=todos_los_eventos_cards.filter(filtrarNombre);
-    let template=card_t(nom);
-    cardTodas.innerHTML=template;
-})
-function filtrarNombre(list){
-    return list.name.toLowerCase().includes( buscador.value.toLowerCase())
-} 
-function filtrarCategoria(list){
-    let chec_c=Array.from(checkbox).filter(e=>e.checked).map(e_check=>e_check.value)
- /*  return list.category.toLowerCase().includes( categorias.target.value.toLowerCase()) */
-    if(chec_c.length){
-        let event_fil=list.filter(e=>chec_c.includes(e.category));
-        return event_fil;
-    }
-    else {
-        return list;
-    }
-} 
 
-function chec(c,l){
-    let cat_nr=[];
-    c.filter(e=>{
-        if(!cat_nr.includes(e.category)){
-            cat_nr.push(e.category)
-        }
-    })
-    let template="";
-    cat_nr.map(e=>{
-        template+=`<input type="checkbox" name="category" value="${e}" >${e}`
-        }
-    )
-/*     for(car of  cat_nr){
-        template+=`<input type="checkbox" name="" value="${car.category}" >${car.category}`
-    } */
-    l.innerHTML=template
-}
 
-function card_t(c){
+
+function cards(c){
     let template="";
     for(car of c){
         template+=`<div class="card" style="width: 18rem;">
@@ -77,8 +39,67 @@ function card_t(c){
         </div>
         </div>`
     }
-    return template
-}
-card_t(todos_los_eventos_cards)
 
-chec(todos_los_eventos_cards,categorias)
+    cardTodas.innerHTML = template;
+}
+
+
+
+
+
+function categories(array){
+
+    const categories=[];
+    array.filter(e =>{
+        if(!categories.includes(e.category) ){
+            categories.push(e.category);
+        }
+    }) 
+
+
+    let aux = ''
+    categories.map(e =>{
+        let cat = `<div class="check-selects">
+        <input type="checkbox" class="checks-deks" value="${e}" name="category" id="${e}">
+        <label for="${e}">${e}</label>
+        </div>
+        `
+        aux += cat;
+    })
+    categoriesCheck.innerHTML = aux
+
+}
+
+
+function categoriasFiltradas(array) {
+    let checks =Array.from( form ).filter(e => e.checked).map(elementCheaqueado => elementCheaqueado.value)
+    if(checks.length){
+        let eventosFiltrados = array.filter(event => checks.includes(event.category))
+        return eventosFiltrados
+    }else{
+        return array
+    }
+}
+
+
+function search(array, text){
+    if(text){
+        eventosFiltrados = array.filter(evento => evento.name.toLowerCase().includes(text.toLowerCase()))
+        return eventosFiltrados;
+    }
+
+    return array
+}
+
+
+function filtroCruzado(){
+    let filtroCheck = categoriasFiltradas(data.events)
+    let filterSearch = search(filtroCheck, buscador.value)
+    cards(filterSearch)
+}
+
+cards(todos_los_eventos_cards, cardTodas);
+categories(todos_los_eventos_cards)
+
+search(todos_los_eventos_cards, buscador.value)
+filtroCruzado()
