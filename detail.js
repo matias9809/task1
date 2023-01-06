@@ -5,10 +5,7 @@ let id = parametros.get("id")
 
 let contenedor = document.getElementById("c_detail")
 
-let CardFiltrada = data.events.filter(cards => {
-    return cards
-})
-let cardEncontrada = CardFiltrada.find(cards => cards._id == id)
+let cardEncontrada = data.events.find(cards => cards._id == id)
 function card_pa(c,l){
     let template="";
     template+=`<div class="card" style="width: 24rem;">
@@ -24,7 +21,7 @@ function card_pa(c,l){
         return `assistance: ${c.assistance}`
     }
 else if(c.estimate){
-    return `estimete: ${c.estimate}`
+    return `estimate: ${c.estimate}`
 }})()
 }</p>
     <div class="price">       
