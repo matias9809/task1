@@ -39,7 +39,9 @@ function cards(c){
         </div>
         </div>`
     }
-
+    if(template==""){
+        template=`<h3 class="text-center mt-4">no result found<h3>`
+    }
     cardTodas.innerHTML = template;
 }
 
