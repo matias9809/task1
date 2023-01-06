@@ -107,5 +107,4 @@ function filtroCruzado(){
 cards(todos_los_eventos_cards, cardTodas);
 categories(todos_los_eventos_cards)
 
-search(todos_los_eventos_cards, buscador.value)
 filtroCruzado()
