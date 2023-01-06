@@ -11,7 +11,7 @@ let CardFiltrada = data.events.filter(cards => {
 let cardEncontrada = CardFiltrada.find(cards => cards._id == id)
 function card_pa(c,l){
     let template="";
-    template+=`<div class="card" style="width: 18rem;">
+    template+=`<div class="card" style="width: 24rem;">
     <img src=${c.image} class="card-img-top" style="height: 10rem;" alt="cinema">
     <div class="card-body">
     <h5 class="card-title">${c.name}</h5>
