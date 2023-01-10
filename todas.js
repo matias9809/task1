@@ -19,7 +19,7 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
         }
         filtroCruzado()
     })
-    .catch(err=>console.log(err.menssage))
+    .catch(err=>console.log(err.message))
 let list=[];
 
 function cards(c){
