@@ -11,7 +11,7 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
         let cardEncontrada = list.events.find(cards => cards._id == id);
         card_pa(cardEncontrada,contenedor);
     })
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err.menssage))
 let list
 
 

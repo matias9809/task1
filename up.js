@@ -21,7 +21,7 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
         filtroCruzado()
 
     })
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err.menssage))
 let list
 
 

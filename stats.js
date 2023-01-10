@@ -13,7 +13,7 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
         past_events(events_past,ubi_past)
         acumulador_upcoming(events_upcomign)
     })
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err.menssage))
 let list=[];
 
 function upcoming(data){
