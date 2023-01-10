@@ -1,18 +1,28 @@
 const cardTodas=document.getElementById("card_up");
 const categorias = document.getElementById( 'cat' );
-
 const categoriesCheck = document.querySelector('.categ');
-const todos_los_eventos_cards=todos_los_eventos(data);
-
-
-const buscador = document.getElementById( 'buscar', filtroCruzado );
+const buscador = document.getElementById( 'buscar');
 const form = document.querySelector('.form')
 
-form.addEventListener( 'change', filtroCruzado)
-buscador.addEventListener('input', filtroCruzado)
+fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
+    .then(Response=>Response.json())
+    .then(res=>{
+        list=res;
+        form.addEventListener( 'change', filtroCruzado)
+        buscador.addEventListener('input', filtroCruzado)
+        const todos_los_eventos_cards=todos_los_eventos(list);
+        cards(todos_los_eventos_cards, cardTodas);
+        categories(list.events)
+        function filtroCruzado(){
+            let filtroCheck = categoriasFiltradas(todos_los_eventos_cards)
+            let filterSearch = search(filtroCheck, buscador.value)
+            cards(filterSearch)
+        }
+        filtroCruzado()
 
-
-
+    })
+    .catch(err=>console.log(err))
+let list
 
 
 function todos_los_eventos(data){
@@ -96,15 +106,3 @@ function search(array, text){
 
     return array
 }
-
-
-function filtroCruzado(){
-    let filtroCheck = categoriasFiltradas(todos_los_eventos_cards)
-    let filterSearch = search(filtroCheck, buscador.value)
-    cards(filterSearch)
-}
-
-cards(todos_los_eventos_cards, cardTodas);
-categories(todos_los_eventos_cards)
-
-filtroCruzado()

@@ -1,29 +1,26 @@
 const cardTodas=document.getElementById("card_home");
 const categorias = document.getElementById( 'cat' );
-
+const buscador = document.getElementById( 'buscar');
 const categoriesCheck = document.querySelector('.categ');
-const todos_los_eventos_cards=todos_los_eventos(data);
-
-
-const buscador = document.getElementById( 'buscar', filtroCruzado );
 const form = document.querySelector('.form')
 
-form.addEventListener( 'change', filtroCruzado)
-buscador.addEventListener('input', filtroCruzado)
-
-
-
-
-
-function todos_los_eventos(data){
-    let list=[];
-    for(eventos of data.events){
-        list.push(eventos);
-    }
-    return list
-}
-
-
+fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
+    .then(Response=>Response.json())
+    .then(res=>{
+        list=res.events;
+        form.addEventListener( 'change', filtroCruzado)
+        buscador.addEventListener('input', filtroCruzado)
+        cards(list, cardTodas);
+        categories(list)
+        function filtroCruzado(){
+            let filtroCheck = categoriasFiltradas(list)
+            let filterSearch = search(filtroCheck, buscador.value)
+            cards(filterSearch)
+        }
+        filtroCruzado()
+    })
+    
+let list=[];
 
 function cards(c){
     let template="";
@@ -45,20 +42,13 @@ function cards(c){
     cardTodas.innerHTML = template;
 }
 
-
-
-
-
 function categories(array){
-
     const categories=[];
     array.filter(e =>{
         if(!categories.includes(e.category) ){
             categories.push(e.category);
         }
     }) 
-
-
     let aux = ''
     categories.map(e =>{
         let cat = `<div class="check-selects">
@@ -69,7 +59,6 @@ function categories(array){
         aux += cat;
     })
     categoriesCheck.innerHTML = aux
-
 }
 
 
@@ -93,14 +82,3 @@ function search(array, text){
     return array
 }
 
-
-function filtroCruzado(){
-    let filtroCheck = categoriasFiltradas(data.events)
-    let filterSearch = search(filtroCheck, buscador.value)
-    cards(filterSearch)
-}
-
-cards(todos_los_eventos_cards, cardTodas);
-categories(todos_los_eventos_cards)
-
-filtroCruzado()

@@ -4,8 +4,17 @@ let parametros = new URLSearchParams(cadenaParametroUrl)
 let id = parametros.get("id")
 
 let contenedor = document.getElementById("c_detail")
+fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
+    .then(Response=>Response.json())
+    .then(res=>{
+        list=res;
+        let cardEncontrada = list.events.find(cards => cards._id == id);
+        card_pa(cardEncontrada,contenedor);
+    })
+    .catch(err=>console.log(err))
+let list
 
-let cardEncontrada = data.events.find(cards => cards._id == id)
+
 function card_pa(c,l){
     let template="";
     template+=`<div class="card" style="width: 24rem;">
@@ -30,4 +39,3 @@ else if(c.estimate){
     </div>`
     l.innerHTML=template;
 }
-card_pa(cardEncontrada,contenedor);
