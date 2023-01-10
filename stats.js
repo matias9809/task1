@@ -108,7 +108,6 @@ function upcoming_events(array,ubi){
         </tr>`;
         
     }
-    console.log(template)
     ubi.innerHTML=template;
 }
 function past_events(array,ubi){
@@ -136,6 +135,5 @@ function past_events(array,ubi){
         </tr>`;
         
     }
-    console.log(template)
     ubi.innerHTML=template;
 }
